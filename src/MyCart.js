@@ -6,21 +6,21 @@ import NumericInput from "react-native-numeric-input";
 
 const PRODUCt = [
   {
-    img: require("../../../assets/s1.jpg"),
+    img: require("../assets/s1.jpg"),
     name: "High heels Sandal",
     price: "5.90",
     discount: "5.90",
     percentage: "0% off",
   },
   {
-    img: require("../../../assets/s2.jpg"),
+    img: require("../assets/s2.jpg"),
     name: "High heels Sandal",
     price: "11.79",
     discount: "12.00",
     percentage: "2% off",
   },
   {
-    img: require("../../../assets/s3.jpg"),
+    img: require("../assets/s3.jpg"),
     name: "High heels Sandal",
     price: "39.20",
     discount: "49.00",
@@ -126,7 +126,7 @@ const MyCart = () => {
                   style={{ position: "absolute", right: 18, top: 40 }}
                 >
                   <Image
-                    source={require("../../../assets/delete.png")}
+                    source={require("../assets/delete.png")}
                     style={{ height: 24, width: 24 }}
                   />
                 </TouchableOpacity>
@@ -158,7 +158,7 @@ const MyCart = () => {
             Proceed To CheckOut
           </Text>
           <Image
-            source={require("../../../assets/ic_next.png")}
+            source={require("../assets/ic_next.png")}
             style={{ height: 20, width: 20, marginLeft: 10 }}
           />
         </View>

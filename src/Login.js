@@ -47,7 +47,7 @@ const Login = () => {
         secureTextEntry
       />
       <TouchableOpacity
-      onPress={() => navigation.navigate('MyTabs')}
+        onPress={() => navigation.navigate("MyTabs")}
         style={{
           height: 50,
           width: 356,
@@ -95,7 +95,7 @@ const Login = () => {
           }}
         >
           <Image
-            source={require("../../../assets/google.png")}
+            source={require("../assets/google.png")}
             style={{
               height: 20,
               width: 22,
@@ -116,7 +116,7 @@ const Login = () => {
             marginTop: 158,
             fontSize: 16,
             color: "#D4D4D4",
-            fontWeight: '500'
+            fontWeight: "500",
           }}
         >
           Don't have an account?-{" "}

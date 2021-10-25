@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Image, Dimensions } from "react-native";
-
+import { StyleSheet } from "react-native";
 const Category = () => {
   return (
     <View
@@ -12,7 +12,7 @@ const Category = () => {
       }}
     >
       <Image
-        source={require("../../../assets/comming-soon.jpg")}
+        source={require("../assets/comming-soon.jpg")}
         style={{ height: 400, width: Dimensions.get("window").width }}
         resizeMode="cover"
       />

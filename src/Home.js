@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/core";
 import React, { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import {
   View,
   TouchableOpacity,
@@ -10,65 +11,65 @@ import {
   SafeAreaView,
   ScrollView,
 } from "react-native";
-import { icons } from "../../constants";
+import { icons } from "../src/constants";
 import { StyleSheet } from "react-native";
 import Carousel from "react-native-snap-carousel";
 const IMG = [
   {
-    img: require("../../../assets/sale.jpg"),
+    img: require("../assets/sale.jpg"),
   },
   {
-    img: require("../../../assets/shoes1.jpg"),
+    img: require("../assets/shoes1.jpg"),
   },
   {
-    img: require("../../../assets/i3.jpg"),
+    img: require("../assets/i3.jpg"),
   },
   {
-    img: require("../../../assets/shoes.jpg"),
+    img: require("../assets/shoes.jpg"),
   },
 ];
 const CATEGORY = [
   {
-    icons: require("../../../assets/fashion.jpg"),
+    icons: require("../assets/fashion.jpg"),
     name: "Fashion",
   },
   {
-    icons: require("../../../assets/accessory.jpg"),
+    icons: require("../assets/accessory.jpg"),
     name: "Accessory",
   },
   {
-    icons: require("../../../assets/mobiphone.jpg"),
+    icons: require("../assets/mobiphone.jpg"),
     name: "Mobiles",
   },
   {
-    icons: require("../../../assets/gocery.jpg"),
+    icons: require("../assets/gocery.jpg"),
     name: "Grocery",
   },
 ];
 const PRODUCT = [
   {
-    img: require("../../../assets/shoes.jpg"),
+    img: require("../assets/shoes.jpg"),
     name: "Nike Sport Shoe For",
     discount: "26.39",
     price: "29.00",
     percentage: "9% off",
   },
   {
-    img: require("../../../assets/i3.jpg"),
+    img: require("../assets/i3.jpg"),
     name: "Iphone 13 Gold Medal",
     discount: "11.76",
     price: "12.00",
     percentage: "2% off",
   },
   {
-    img: require("../../../assets/gocery.jpg"),
+    img: require("../assets/gocery.jpg"),
     name: "Vegetable and Fruit",
     price: "26.39",
     discount: "29.00",
     percentage: "9% off",
   },
   {
-    img: require("../../../assets/shoes1.jpg"),
+    img: require("../assets/shoes1.jpg"),
     name: "High heel Sandal",
     price: "26.39",
     discount: "29.00",
@@ -244,16 +245,18 @@ const Home = () => {
                       borderRadius: 10,
                     }}
                   >
-                    <TouchableOpacity onPress={()=> navigation.navigate('Product Details')}>
-                    <Image
-                      source={item.img}
-                      style={{
-                        height: 100,
-                        width: 180,
-                        borderTopLeftRadius: 10,
-                        borderTopRightRadius: 10,
-                      }}
-                    />
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("Product Details")}
+                    >
+                      <Image
+                        source={item.img}
+                        style={{
+                          height: 100,
+                          width: 180,
+                          borderTopLeftRadius: 10,
+                          borderTopRightRadius: 10,
+                        }}
+                      />
                     </TouchableOpacity>
                     <Text
                       style={{
