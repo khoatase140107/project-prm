@@ -42,21 +42,21 @@ const MyCart = () => {
               <View
                 style={{
                   height: 130,
-                  width: 350,
                   backgroundColor: "#fbf5f5",
-                  shadowOpacity: 0.2,
+
                   flexDirection: "row",
                   borderRadius: 10,
+                  marginBottom: 20,
                   //   alignItems: "center",
                 }}
               >
-                <View style={{ marginTop: 16 }}>
+                <View style={{ padding: 10 }}>
                   <Image
                     source={item.img}
                     style={{
-                      height: 65,
-                      width: 65,
-                      marginLeft: 10,
+                      height: "100%",
+                      width: 90,
+                      resizeMode: "cover",
                       marginRight: 10,
                     }}
                   />
@@ -67,7 +67,7 @@ const MyCart = () => {
                       color: "#777777",
                       fontSize: 18,
                       fontWeight: "500",
-                      marginBottom: 16,
+                      marginBottom: 18,
                     }}
                     key={Math.random().toString()}
                   >
@@ -80,13 +80,13 @@ const MyCart = () => {
                       alignItems: "center",
                     }}
                   >
-                    <Text style={{ color: "#707070", fontSize: 16 }}>
+                    <Text style={{ color: "#707070", fontSize: 18 }}>
                       ${item.price}
                     </Text>
                     <Text
                       style={{
                         color: "#707070",
-                        fontSize: 12,
+                        fontSize: 16,
                         textDecorationLine: "line-through",
                       }}
                     >
@@ -95,7 +95,7 @@ const MyCart = () => {
                     <Text
                       style={{
                         color: "#4D91F8",
-                        fontSize: 12,
+                        fontSize: 16,
                         fontWeight: "500",
                       }}
                     >
@@ -107,9 +107,9 @@ const MyCart = () => {
                       value={value}
                       onChange={(value) => setValue(value)}
                       onLimitReached={(isMax, msg) => console.log(isMax, msg)}
-                      totalWidth={66}
-                      totalHeight={22}
-                      iconSize={25}
+                      totalWidth={200}
+                      totalHeight={30}
+                      iconSize={30}
                       step={1}
                       // valueType='real'
                       rounded
@@ -127,7 +127,7 @@ const MyCart = () => {
                 >
                   <Image
                     source={require("../assets/delete.png")}
-                    style={{ height: 24, width: 24 }}
+                    style={{ height: 26, width: 26 }}
                   />
                 </TouchableOpacity>
                 {/* </View> */}
@@ -170,8 +170,7 @@ const MyCart = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
-    marginTop: 10,
-    marginHorizontal: 16,
+    padding: 20,
   },
 });
 

@@ -12,17 +12,16 @@ import { StyleSheet } from "react-native";
 const Login = () => {
   const navigation = useNavigation();
   return (
-    <View style={{ marginHorizontal: 16, marginTop: 130 }}>
-      <Text style={style.text}>Sign In</Text>
-      <Text style={[style.text, style.mv]}>To Account</Text>
+    <View style={{ marginHorizontal: 16, marginTop: 130, padding: 10 }}>
+      <Text style={style.text}>Đăng nhập</Text>
+      <Text style={[style.text, style.mv]}>Với Tài Khoản</Text>
       <Text style={{ color: "#A5A5A5" }}>
-        Sign with username or email and password to use your account
+        Đăng nhập với tài khoản và mật khẩu của bạn để trải nghiệm mua sắm
       </Text>
       <TextInput
-        placeholder={"huytq@gmail.com"}
+        placeholder={"Tên đăng nhập"}
         style={{
           height: 44,
-          width: 350,
           borderWidth: 0.2,
           paddingLeft: 8,
           borderRadius: 6,
@@ -33,10 +32,9 @@ const Login = () => {
         keyboardType={"email-address"}
       />
       <TextInput
-        placeholder={"*******"}
+        placeholder={"Mật khẩu"}
         style={{
           height: 44,
-          width: 350,
           borderWidth: 0.2,
           paddingLeft: 8,
           borderRadius: 6,
@@ -50,8 +48,7 @@ const Login = () => {
         onPress={() => navigation.navigate("MyTabs")}
         style={{
           height: 50,
-          width: 356,
-          marginTop: 140,
+          marginTop: 50,
           borderRadius: 10,
           backgroundColor: "#1981F8",
         }}
@@ -72,40 +69,7 @@ const Login = () => {
               textAlign: "center",
             }}
           >
-            Sign In
-          </Text>
-        </View>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={{
-          height: 50,
-          width: 356,
-          marginTop: 20,
-          borderRadius: 10,
-          backgroundColor: "#373737",
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: 14,
-          }}
-        >
-          <Image
-            source={require("../assets/google.png")}
-            style={{
-              height: 20,
-              width: 22,
-              paddingLeft: 12,
-              position: "relative",
-              left: -10,
-            }}
-          />
-          <Text style={{ color: "white", fontSize: 20, fontWeight: "500" }}>
-            Sign In with google
+            Đăng nhập
           </Text>
         </View>
       </TouchableOpacity>
@@ -113,14 +77,14 @@ const Login = () => {
         <Text
           style={{
             textAlign: "center",
-            marginTop: 158,
+            marginTop: 20,
             fontSize: 16,
-            color: "#D4D4D4",
+            color: "gray",
             fontWeight: "500",
           }}
         >
-          Don't have an account?-{" "}
-          <Text style={{ color: "#4F92F8" }}>Sign Up</Text>
+          Bạn chưa có tài khoản?
+          <Text style={{ color: "#4F92F8" }}> Đăng ký</Text>
         </Text>
       </TouchableOpacity>
     </View>

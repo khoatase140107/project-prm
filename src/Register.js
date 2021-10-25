@@ -12,16 +12,15 @@ import { StyleSheet } from "react-native";
 const Register = () => {
   const navigation = useNavigation();
   return (
-    <View style={{ marginHorizontal: 16, marginTop: 130 }}>
-      <Text style={style.text}>Welcome</Text>
-      <Text style={{ color: "#A5A5A5", marginTop: 8 }}>
-        Please provide following details for your new account
+    <View style={{ marginHorizontal: 16, marginTop: 130, padding: 10 }}>
+      <Text style={style.text}>Xin chào</Text>
+      <Text style={{ color: "#A5A5A5", marginTop: 8, textAlign: "center" }}>
+        Vui lòng cung cấp các chi tiết sau cho tài khoản mới
       </Text>
       <TextInput
-        placeholder={"Full Name"}
+        placeholder={"Họ và tên"}
         style={{
           height: 44,
-          width: 350,
           borderWidth: 0.2,
           paddingLeft: 8,
           borderRadius: 6,
@@ -32,10 +31,9 @@ const Register = () => {
         keyboardType={"email-address"}
       />
       <TextInput
-        placeholder={"huytq@gmail.com"}
+        placeholder={"Tên đăng nhập"}
         style={{
           height: 44,
-          width: 350,
           borderWidth: 0.2,
           paddingLeft: 8,
           borderRadius: 6,
@@ -45,10 +43,23 @@ const Register = () => {
         keyboardType={"default"}
       />
       <TextInput
-        placeholder={"*******"}
+        placeholder={"Mật khẩu"}
         style={{
           height: 44,
-          width: 350,
+          borderWidth: 0.2,
+          paddingLeft: 8,
+          borderRadius: 6,
+          marginBottom: 20,
+        }}
+        placeholderTextColor={"#919191"}
+        keyboardType={"default"}
+        keyboardAppearance={"default"}
+        secureTextEntry
+      />
+      <TextInput
+        placeholder={"Xác nhận mật khẩu"}
+        style={{
+          height: 44,
           borderWidth: 0.2,
           paddingLeft: 8,
           borderRadius: 6,
@@ -61,8 +72,7 @@ const Register = () => {
       <TouchableOpacity
         style={{
           height: 50,
-          width: 356,
-          marginTop: 140,
+          marginTop: 40,
           borderRadius: 10,
           backgroundColor: "#1981F8",
         }}
@@ -83,40 +93,7 @@ const Register = () => {
               textAlign: "center",
             }}
           >
-            Sign Up
-          </Text>
-        </View>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={{
-          height: 50,
-          width: 356,
-          marginTop: 20,
-          borderRadius: 10,
-          backgroundColor: "#373737",
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: 14,
-          }}
-        >
-          <Image
-            source={require("../assets/google.png")}
-            style={{
-              height: 20,
-              width: 22,
-              paddingLeft: 12,
-              position: "relative",
-              left: -10,
-            }}
-          />
-          <Text style={{ color: "white", fontSize: 20, fontWeight: "500" }}>
-            Sign In with google
+            Đăng ký
           </Text>
         </View>
       </TouchableOpacity>
@@ -124,14 +101,14 @@ const Register = () => {
         <Text
           style={{
             textAlign: "center",
-            marginTop: 140,
+            marginTop: 20,
             fontSize: 16,
-            color: "#D4D4D4",
+            color: "gray",
             fontWeight: "500",
           }}
         >
-          Already have and account?{" "}
-          <Text style={{ color: "#4F92F8" }}>Sign In</Text>
+          Đã có tài khoản?
+          <Text style={{ color: "#4F92F8" }}> Đăng nhập</Text>
         </Text>
       </TouchableOpacity>
     </View>

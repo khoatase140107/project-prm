@@ -81,24 +81,23 @@ const Home = () => {
   const [active, setActive] = useState(0);
   return (
     <ScrollView>
-      <View style={{ marginTop: 34 }}>
+      <View style={{ marginTop: 30 }}>
         {/* =====Header===== */}
         <View
           style={{
+            padding: 20,
             backgroundColor: "#1981F8",
             height: 80,
-            borderBottomLeftRadius: 6,
-            borderBottomRightRadius: 6,
             flexDirection: "row",
             alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
           <View
             style={{
               height: 40,
-              width: 270,
+              width: 280,
               backgroundColor: "white",
-              marginHorizontal: 20,
               borderRadius: 8,
               flexDirection: "row",
               alignItems: "center",
@@ -106,14 +105,14 @@ const Home = () => {
           >
             <Image source={icons.search} style={style.icon} />
             <TextInput
-              placeholderTextColor={"#E1E1E1"}
+              placeholderTextColor={"gray"}
               placeholder={"Search"}
               style={{ fontWeight: "600", fontSize: 14, paddingLeft: 10 }}
             />
           </View>
           <Image
             source={icons.notification}
-            style={{ height: 20, width: 20 }}
+            style={{ height: 20, width: 20, marginLeft: 30 }}
           />
           <Image source={icons.cart} style={style.icon} />
         </View>
@@ -157,7 +156,7 @@ const Home = () => {
             }}
           >
             <Text style={style.msg}>Category</Text>
-            <Text style={style.view}>View All</Text>
+            <Text style={style.view}>Xem tất cả</Text>
           </View>
         </View>
         {/* ==begin */}
@@ -223,11 +222,11 @@ const Home = () => {
               alignItems: "center",
             }}
           >
-            <Text style={style.msg}>Best Seller</Text>
-            <Text style={style.view}>View All</Text>
+            <Text style={style.msg}>Sản phẩm mới nhất</Text>
+            <Text style={style.view}>Xem tất cả</Text>
           </View>
           {/* =====product==== */}
-          <View style={{ marginHorizontal: 14 }}>
+          <View style={{ marginHorizontal: 14, marginBottom: 15 }}>
             <FlatList
               data={PRODUCT}
               showsHorizontalScrollIndicator={false}
@@ -258,85 +257,83 @@ const Home = () => {
                         }}
                       />
                     </TouchableOpacity>
-                    <Text
-                      style={{
-                        color: "#585858",
-                        fontSize: 16,
-                        marginTop: 6,
-                        marginLeft: 4,
-                      }}
-                    >
-                      {item.name}
-                    </Text>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        marginLeft: 4,
-                        marginTop: 6,
-                      }}
-                    >
-                      <Image source={icons.start} style={style.start} />
-                      <Image source={icons.start} style={style.start} />
-                      <Image source={icons.start} style={style.start} />
-                      <Image source={icons.start} style={style.start} />
-                      <Image source={icons.start} style={style.start} />
-                    </View>
-                    <Text
-                      style={{
-                        color: "#585858",
-                        fontSize: 16,
-                        marginTop: 6,
-                        marginLeft: 4,
-                      }}
-                    >
-                      ${item.discount}
-                    </Text>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        marginTop: 6,
-                        marginLeft: 4,
-                        justifyContent: "space-between",
-                      }}
-                    >
+                    <View style={{ padding: 10 }}>
                       <Text
                         style={{
                           color: "#585858",
-                          fontSize: 14,
-                          textDecorationLine: "line-through",
+                          fontSize: 16,
                         }}
                       >
-                        ${item.price}
+                        {item.name}
                       </Text>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          alignItems: "center",
+                          marginTop: 6,
+                        }}
+                      >
+                        <Image source={icons.start} style={style.start} />
+                        <Image source={icons.start} style={style.start} />
+                        <Image source={icons.start} style={style.start} />
+                        <Image source={icons.start} style={style.start} />
+                        <Image source={icons.start} style={style.start} />
+                      </View>
                       <Text
                         style={{
-                          color: "#2F88F8",
-                          fontSize: 14,
-                          position: "relative",
-                          right: 14,
+                          color: "#585858",
+                          fontSize: 16,
+                          marginTop: 6,
                         }}
                       >
-                        ${item.percentage}
+                        ${item.discount}
                       </Text>
-                      <TouchableOpacity
+                      <View
                         style={{
-                          width: 35,
-                          height: 35,
-                          backgroundColor: "#2F88F8",
-                          borderRadius: 6,
+                          flexDirection: "row",
+                          marginTop: 6,
+                          justifyContent: "space-between",
                         }}
                       >
-                        <Image
-                          source={icons.cart}
+                        <Text
                           style={{
-                            height: 20,
-                            width: 20,
-                            marginTop: 6,
-                            marginLeft: 6,
+                            color: "#585858",
+                            fontSize: 14,
+                            textDecorationLine: "line-through",
                           }}
-                        />
-                      </TouchableOpacity>
+                        >
+                          ${item.price}
+                        </Text>
+                        <Text
+                          style={{
+                            color: "#2F88F8",
+                            fontSize: 14,
+                            position: "relative",
+                            right: 0,
+                          }}
+                        >
+                          ${item.percentage}
+                        </Text>
+                        <TouchableOpacity
+                          style={{
+                            width: 40,
+                            height: 40,
+                            backgroundColor: "#2F88F8",
+                            borderRadius: 6,
+                            marginTop: -20,
+                          }}
+                        >
+                          <Image
+                            source={icons.cart}
+                            style={{
+                              height: 20,
+                              width: 20,
+                              marginTop: 8,
+                              marginLeft: 8,
+                            }}
+                          />
+                        </TouchableOpacity>
+                      </View>
                     </View>
                   </View>
                 );
