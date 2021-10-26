@@ -7,12 +7,15 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Checkout from "./src/Checkout";
 import Home from "./src/Home";
 import MyCart from "./src/MyCart";
-import Login from "./src/Login";
+import Login from "./src/account/Login";
 import { icons } from "./src/constants";
-import Register from "./src/Register";
+import Register from "./src/account/Register";
 import ProductDetails from "./src/ProductDetails";
 import Category from "./src/Category";
 import Account from "./src/Account";
+import CreateProduct from "./src/crud/CreateProduct";
+import UpdateProduct from "./src/crud/UpdateProduct";
+import ListProduct from "./src/crud/ListProduct";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -76,6 +79,30 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Product Details" component={ProductDetails} />
+        <Stack.Screen
+          options={{
+            headerTitle: "Tạo Sản phẩm",
+            headerBackTitle: "",
+          }}
+          name="CreateProduct"
+          component={CreateProduct}
+        />
+        <Stack.Screen
+          options={{
+            headerTitle: "Cập nhật Sản phẩm",
+            headerBackTitle: "",
+          }}
+          name="UpdateProduct"
+          component={UpdateProduct}
+        />
+        <Stack.Screen
+          options={{
+            headerTitle: "Danh sách Sản phẩm",
+            headerBackTitle: null,
+          }}
+          name="ListProduct"
+          component={ListProduct}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
