@@ -42,7 +42,7 @@ const ListProduct = () => {
         "http://20.188.111.70:5001/api/Product/" + id
       );
       if (response.status === 200) {
-        await loadProduct();
+        loadProduct();
         Alert.alert("Xóa thành công");
       }
     } catch (error) {

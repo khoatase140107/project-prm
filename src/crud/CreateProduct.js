@@ -183,7 +183,7 @@ const CreateProduct = () => {
           <MaterialIcons name="description" style={style.icon} />
           <TextInput
             multiline={true}
-            placeholder="Mổ tả"
+            placeholder="Mô tả"
             style={style.textInput}
             onChangeText={(moreInfo) => setMoreInfo(moreInfo)}
           />
