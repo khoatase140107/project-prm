@@ -1,6 +1,5 @@
 import React from "react";
 import { Image, SafeAreaView, View, StyleSheet } from "react-native";
-
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -11,11 +10,16 @@ import Login from "./src/account/Login";
 import { icons } from "./src/constants";
 import Register from "./src/account/Register";
 import ProductDetails from "./src/ProductDetails";
-import Category from "./src/Category";
+import ProductSale from "./src/ProductSale";
 import Account from "./src/Account";
+
 import CreateProduct from "./src/crud/CreateProduct";
 import UpdateProduct from "./src/crud/UpdateProduct";
 import ListProduct from "./src/crud/ListProduct";
+
+import History from "./src/History";
+import ProductsByCate from "./src/ProductsByCate";
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -27,12 +31,12 @@ function MyTabs() {
           let iconName;
           if (route.name === "Home") {
             iconName = focused ? icons.home_a : icons.home;
-          } else if (route.name === "Category") {
+          } else if (route.name === "Giảm giá") {
             iconName = focused ? icons.cate_a : icons.cate;
-          } else if (route.name === "MyCart") {
+          } else if (route.name === "Giỏ Hàng") {
             iconName = focused ? icons.cart_a : icons.cart;
-          } else if (route.name === "Account") {
-            iconName = focused ? icons.account : icons.user;
+          } else if (route.name === "Lịch sử") {
+            iconName = focused ? icons.cart_a : icons.cart;
           }
           return (
             <Image
@@ -51,9 +55,21 @@ function MyTabs() {
         component={Home}
         options={{ headerShown: false }}
       />
-      <Tab.Screen name="Category" component={Category} />
-      <Tab.Screen name="MyCart" component={MyCart} />
-      <Tab.Screen name="Account" component={Account} />
+      <Tab.Screen
+        options={{ headerTitle: "Sản phẩm giảm giá" }}
+        name="Giảm giá"
+        component={ProductSale}
+      />
+      <Tab.Screen
+        options={{ headerTitle: "Giỏ hàng của bạn" }}
+        name="Giỏ Hàng"
+        component={MyCart}
+      />
+      <Tab.Screen
+        options={{ headerTitle: "Lịch sử mua hàng" }}
+        name="Lịch sử"
+        component={History}
+      />
     </Tab.Navigator>
   );
 }
@@ -78,6 +94,7 @@ export default function App() {
           component={Register}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen name="Product Details" component={ProductDetails} />
         <Stack.Screen
           options={{
@@ -103,6 +120,10 @@ export default function App() {
           name="ListProduct"
           component={ListProduct}
         />
+
+        <Stack.Screen name="ProDetails" component={ProductDetails} />
+        <Stack.Screen name="ProductsByCate" component={ProductsByCate} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
