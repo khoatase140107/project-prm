@@ -182,26 +182,7 @@ const ProductDetails = () => {
         }}
       >
         <Image source={icons.heart} style={{ height: 40, width: 40 }} />
-        <TouchableOpacity
-          style={{
-            height: 40,
-            width: 320,
-            borderRadius: 4,
-            backgroundColor: "#1981F8",
-          }}
-        >
-          <Text
-            style={{
-              color: "white",
-              fontSize: 20,
-              textAlign: "center",
-              marginTop: 6,
-              fontWeight: "600",
-            }}
-          >
-            Thêm vào giỏ hàng
-          </Text>
-        </TouchableOpacity>
+        
       </View>
     </View>
   );
