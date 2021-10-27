@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/core";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   View,
@@ -30,20 +31,20 @@ const IMG = [
 ];
 const CATEGORY = [
   {
-    icons: require("../assets/fashion.jpg"),
-    name: "Fashion",
-  },
-  {
-    icons: require("../assets/accessory.jpg"),
-    name: "Accessory",
-  },
-  {
     icons: require("../assets/mobiphone.jpg"),
-    name: "Mobiles",
+    name: "Phone",
   },
   {
-    icons: require("../assets/gocery.jpg"),
-    name: "Grocery",
+    icons: require("../assets/laptop.jpg"),
+    name: "Laptop",
+  },
+  {
+    icons: require("../assets/tablet.jpg"),
+    name: "Tablet",
+  },
+  {
+    icons: require("../assets/TV.jpg"),
+    name: "TV",
   },
 ];
 const PRODUCT = [
@@ -76,9 +77,29 @@ const PRODUCT = [
     percentage: "9% off",
   },
 ];
+
 const Home = () => {
   const navigation = useNavigation();
   const [active, setActive] = useState(0);
+  const [productSale, setProdcutSale] = useState([]);
+
+  useEffect(() => {
+    getProductsSale();
+  }, []);
+
+  const getProductsSale = async () => {
+    try {
+      const response = await axios.get(
+        "http://20.188.111.70:5001/api/Product?pageNumber=1&pageSize=4"
+      );
+      if (response.status === 200) {
+        setProdcutSale(response.data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <ScrollView>
       <View style={{ marginTop: 30 }}>
@@ -114,7 +135,13 @@ const Home = () => {
             source={icons.notification}
             style={{ height: 20, width: 20, marginLeft: 30 }}
           />
-          <Image source={icons.cart} style={style.icon} />
+          <TouchableOpacity
+            onPress={() => {
+              console.log("haha");
+            }}
+          >
+            <Image source={icons.cart} style={style.icon} />
+          </TouchableOpacity>
         </View>
         {/* ====Carousel====== */}
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
@@ -125,7 +152,7 @@ const Home = () => {
             itemWidth={300}
             renderItem={({ item, index }) => {
               return (
-                <View
+                <TouchableOpacity
                   style={{
                     borderRadius: 5,
                     height: 250,
@@ -138,7 +165,7 @@ const Home = () => {
                     source={item.img}
                     style={{ height: 160, width: 300, borderRadius: 8 }}
                   />
-                </View>
+                </TouchableOpacity>
               );
             }}
             onSnapToItem={(index) => setActive(index)}
@@ -156,7 +183,6 @@ const Home = () => {
             }}
           >
             <Text style={style.msg}>Category</Text>
-            <Text style={style.view}>Xem tất cả</Text>
           </View>
         </View>
         {/* ==begin */}
@@ -170,7 +196,12 @@ const Home = () => {
             itemWidth={120}
             renderItem={({ item, index }) => {
               return (
-                <View
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("ProductsByCate", {
+                      categoryName: item.name,
+                    });
+                  }}
                   style={{
                     borderRadius: 5,
                     height: 140,
@@ -203,7 +234,7 @@ const Home = () => {
                   >
                     {item.name}
                   </Text>
-                </View>
+                </TouchableOpacity>
               );
             }}
             onSnapToItem={(index) => setActive(index)}
@@ -222,123 +253,146 @@ const Home = () => {
               alignItems: "center",
             }}
           >
-            <Text style={style.msg}>Sản phẩm mới nhất</Text>
-            <Text style={style.view}>Xem tất cả</Text>
+            <Text style={style.msg}>Sản phẩm đang giảm giá</Text>
+            <Text
+              onPress={() => {
+                navigation.navigate("Giảm giá");
+              }}
+              style={style.view}
+            >
+              Xem tất cả
+            </Text>
           </View>
           {/* =====product==== */}
           <View style={{ marginHorizontal: 14, marginBottom: 15 }}>
-            <FlatList
-              data={PRODUCT}
-              showsHorizontalScrollIndicator={false}
-              pagingEnabled
-              horizontal
-              renderItem={({ item, index }) => {
-                return (
-                  <View
-                    style={{
-                      height: 210,
-                      width: 180,
-                      backgroundColor: "white",
-                      shadowOpacity: 0.2,
-                      marginRight: 14,
-                      borderRadius: 10,
-                    }}
-                  >
-                    <TouchableOpacity
-                      onPress={() => navigation.navigate("Product Details")}
+            {productSale.length > 0 ? (
+              <FlatList
+                data={productSale}
+                showsHorizontalScrollIndicator={false}
+                pagingEnabled
+                horizontal
+                renderItem={({ item, index }) => {
+                  return (
+                    <View
+                      style={{
+                        height: 230,
+                        width: 180,
+                        backgroundColor: "white",
+                        shadowOpacity: 0.2,
+                        marginRight: 14,
+                        borderRadius: 10,
+                      }}
                     >
-                      <Image
-                        source={item.img}
-                        style={{
-                          height: 100,
-                          width: 180,
-                          borderTopLeftRadius: 10,
-                          borderTopRightRadius: 10,
-                        }}
-                      />
-                    </TouchableOpacity>
-                    <View style={{ padding: 10 }}>
-                      <Text
-                        style={{
-                          color: "#585858",
-                          fontSize: 16,
-                        }}
+                      <TouchableOpacity
+                        onPress={() => navigation.navigate("ProDetails")}
                       >
-                        {item.name}
-                      </Text>
-                      <View
-                        style={{
-                          flexDirection: "row",
-                          alignItems: "center",
-                          marginTop: 6,
-                        }}
-                      >
-                        <Image source={icons.start} style={style.start} />
-                        <Image source={icons.start} style={style.start} />
-                        <Image source={icons.start} style={style.start} />
-                        <Image source={icons.start} style={style.start} />
-                        <Image source={icons.start} style={style.start} />
-                      </View>
-                      <Text
-                        style={{
-                          color: "#585858",
-                          fontSize: 16,
-                          marginTop: 6,
-                        }}
-                      >
-                        ${item.discount}
-                      </Text>
-                      <View
-                        style={{
-                          flexDirection: "row",
-                          marginTop: 6,
-                          justifyContent: "space-between",
-                        }}
-                      >
+                        <Image
+                          source={{
+                            uri: item.img,
+                          }}
+                          style={{
+                            height: 100,
+                            width: 180,
+                            borderTopLeftRadius: 10,
+                            borderTopRightRadius: 10,
+                          }}
+                        />
+                      </TouchableOpacity>
+                      <View style={{ padding: 10 }}>
                         <Text
                           style={{
                             color: "#585858",
-                            fontSize: 14,
-                            textDecorationLine: "line-through",
+                            fontSize: 16,
                           }}
                         >
-                          ${item.price}
+                          {item.name}
                         </Text>
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            alignItems: "center",
+                            marginTop: 6,
+                          }}
+                        >
+                          <Image source={icons.start} style={style.start} />
+                          <Image source={icons.start} style={style.start} />
+                          <Image source={icons.start} style={style.start} />
+                          <Image source={icons.start} style={style.start} />
+                          <Image source={icons.start} style={style.start} />
+                        </View>
                         <Text
                           style={{
-                            color: "#2F88F8",
-                            fontSize: 14,
-                            position: "relative",
-                            right: 0,
+                            color: "#585858",
+                            fontSize: 16,
+                            marginTop: 6,
                           }}
                         >
-                          ${item.percentage}
+                          Giảm giá: {item.discount} %
                         </Text>
-                        <TouchableOpacity
+                        <View
                           style={{
-                            width: 40,
-                            height: 40,
-                            backgroundColor: "#2F88F8",
-                            borderRadius: 6,
-                            marginTop: -20,
+                            flexDirection: "row",
+                            marginTop: 6,
+                            justifyContent: "space-between",
                           }}
                         >
-                          <Image
-                            source={icons.cart}
+                          <View>
+                            <Text
+                              style={{
+                                color: "#585858",
+                                fontSize: 14,
+                                textDecorationLine: "line-through",
+                              }}
+                            >
+                              ${item.cost}
+                            </Text>
+                            <Text
+                              style={{
+                                color: "#2F88F8",
+                                fontSize: 14,
+                                position: "relative",
+                                right: 0,
+                              }}
+                            >
+                              ${item.cost - (item.cost * item.discount) / 100}
+                            </Text>
+                          </View>
+
+                          <TouchableOpacity
                             style={{
-                              height: 20,
-                              width: 20,
-                              marginTop: 8,
-                              marginLeft: 8,
+                              width: 40,
+                              height: 40,
+                              backgroundColor: "#2F88F8",
+                              borderRadius: 6,
+                              marginTop: 0,
                             }}
-                          />
-                        </TouchableOpacity>
+                          >
+                            <Image
+                              source={icons.cart}
+                              style={{
+                                height: 20,
+                                width: 20,
+                                marginTop: 8,
+                                marginLeft: 8,
+                              }}
+                            />
+                          </TouchableOpacity>
+                        </View>
                       </View>
                     </View>
-                  </View>
-                );
-              }}
-            />
+                  );
+                }}
+              />
+            ) : (
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: "700",
+                }}
+              >
+                Không có sản phẩm nào đang khuyến mã
+              </Text>
+            )}
           </View>
         </View>
       </View>
